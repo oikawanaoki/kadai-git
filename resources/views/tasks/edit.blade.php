@@ -4,11 +4,11 @@
 
 <!-- ここにページ毎のコンテンツを書く -->
 
-<h1>id: {{ $message->id }} のメッセージ編集ページ</h1>
+<h1>id: {{ $tasks->id }} のメッセージ編集ページ</h1>
 
     <div class="row">
         <div class="col-6">
-            {!! Form::model($message, ['route' => ['tasks.update', $message->id], 'method' => 'put']) !!}
+            {!! Form::model($tasks, ['route' => ['tasks.update', $tasks->id], 'method' => 'put']) !!}
 
                 <div class="form-group">
                     {!! Form::label('content', 'メッセージ:') !!}

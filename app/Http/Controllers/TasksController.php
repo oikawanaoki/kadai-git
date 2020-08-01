@@ -35,7 +35,7 @@ class TasksController extends Controller
 
         // メッセージ作成ビューを表示
         return view('tasks.create', [
-            'tasks' => $message,
+            'task' => $message,
         ]);
     }
 
@@ -69,7 +69,7 @@ class TasksController extends Controller
 
         // メッセージ詳細ビューでそれを表示
         return view('tasks.show', [
-            'tasks' => $message,
+            'task' => $message,
         ]);
     }
 
@@ -86,7 +86,7 @@ class TasksController extends Controller
 
         // メッセージ編集ビューでそれを表示
         return view('tasks.edit', [
-            'tasks' => $message,
+            'task' => $message,
         ]);
     }
 
