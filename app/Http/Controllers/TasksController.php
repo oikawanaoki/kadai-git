@@ -47,12 +47,16 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        // バリデーション
+         // バリデーションの指定
         $request->validate([
             'content' => 'required|max:255',
+            'status' => 'required|max:9',
+
         ]);
-         // メッセージを作成
+        
+        // メッセージを作成
         $message = new Task;
+        $message->status = $request->status; 
         $message->content = $request->content;
         $message->save();
 
@@ -103,9 +107,17 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //バリデーションの指定
+        $request->validate([
+            'content' => 'required|max:255',
+            'status' => 'required|max:9',
+        ]);
+
+        
          // idの値でメッセージを検索して取得
         $message = Task::findOrFail($id);
         // メッセージを更新
+        $message->status = $request->status; 
         $message->content = $request->content;
         $message->save();
 
