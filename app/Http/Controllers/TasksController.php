@@ -23,6 +23,7 @@ class TasksController extends Controller
             'tasks' => $messages,
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +51,7 @@ class TasksController extends Controller
          // バリデーションの指定
         $request->validate([
             'content' => 'required|max:255',
-            'status' => 'required|max:9',
+            'status' => 'required|max:10',
 
         ]);
         
@@ -110,7 +111,7 @@ class TasksController extends Controller
         //バリデーションの指定
         $request->validate([
             'content' => 'required|max:255',
-            'status' => 'required|max:9',
+            'status' => 'required|max:10',
         ]);
 
         
