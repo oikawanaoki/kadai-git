@@ -13,7 +13,7 @@ class CreateTasklist extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('create_taks_table', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('content');    // contentカラム追加
             $table->timestamps();

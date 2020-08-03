@@ -13,7 +13,7 @@ class AddTitleToMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
+        Schema::table('add_status_to_tasks_table', function (Blueprint $table) {
             //カラム名をstatus　VARCHAR(10)で設定。
             $table->string('status',10);
         });
@@ -26,8 +26,8 @@ class AddTitleToMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->string('status');
+        Schema::table('add_status_to_tasks_table', function (Blueprint $table) {
+            $table->dropColumn('status');
             //
         });
     }

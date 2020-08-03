@@ -16,11 +16,11 @@ class TasksController extends Controller
     public function index()
     {
          // メッセージ一覧を取得
-        $messages = Task::all();
+        $tasks = Task::all();
 
         // メッセージ一覧ビューでそれを表示
         return view('tasks.index', [
-            'tasks' => $messages,
+            'tasks' => $tasks,
         ]);
     }
     
@@ -32,11 +32,11 @@ class TasksController extends Controller
      */
     public function create()
     {
-        $message = new Task;
+        $task = new Task;
 
         // メッセージ作成ビューを表示
         return view('tasks.create', [
-            'task' => $message,
+            'task' => $task,
         ]);
     }
 
@@ -56,10 +56,10 @@ class TasksController extends Controller
         ]);
         
         // メッセージを作成
-        $message = new Task;
-        $message->status = $request->status; 
-        $message->content = $request->content;
-        $message->save();
+        $task = new Task;
+        $task->status = $request->status; 
+        $task->content = $request->content;
+        $task->save();
 
         // トップページへリダイレクトさせる
         return redirect('/');
@@ -74,11 +74,11 @@ class TasksController extends Controller
     public function show($id)
     {
         // idの値でメッセージを検索して取得
-        $message = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
 
         // メッセージ詳細ビューでそれを表示
         return view('tasks.show', [
-            'task' => $message,
+            'task' => $task,
         ]);
     }
 
@@ -91,11 +91,11 @@ class TasksController extends Controller
     public function edit($id)
     {
         // idの値でメッセージを検索して取得
-        $message = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
 
         // メッセージ編集ビューでそれを表示
         return view('tasks.edit', [
-            'task' => $message,
+            'task' => $task,
         ]);
     }
 
@@ -116,11 +116,11 @@ class TasksController extends Controller
 
         
          // idの値でメッセージを検索して取得
-        $message = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
         // メッセージを更新
-        $message->status = $request->status; 
-        $message->content = $request->content;
-        $message->save();
+        $task->status = $request->status; 
+        $task->content = $request->content;
+        $task->save();
 
         // トップページへリダイレクトさせる
         return redirect('/');
@@ -135,9 +135,9 @@ class TasksController extends Controller
     public function destroy($id)
     {
          // idの値でメッセージを検索して取得
-        $message = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
         // メッセージを削除
-        $message->delete();
+        $task->delete();
 
         // トップページへリダイレクトさせる
         return redirect('/');
