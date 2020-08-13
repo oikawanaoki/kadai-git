@@ -15,6 +15,8 @@ class TasksController extends Controller
      */
     public function index()
     {
+        if (\Auth::check()) { // 認証済みの場合
+        
          // メッセージ一覧を取得
         $tasks = Task::all();
 
@@ -22,6 +24,8 @@ class TasksController extends Controller
         return view('tasks.index', [
             'tasks' => $tasks,
         ]);
+        }
+        return view('welcome');
     }
     
 
@@ -61,8 +65,8 @@ class TasksController extends Controller
         $task->content = $request->content;
         $task->save();
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+        // タスク一覧へリダイレクトさせる
+        return redirect('/tasks');
     }
 
     /**
@@ -122,8 +126,8 @@ class TasksController extends Controller
         $task->content = $request->content;
         $task->save();
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+        // タスク一覧へリダイレクトさせる
+        return redirect('/tasks');
     }
 
     /**
@@ -134,12 +138,11 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-         // idの値でメッセージを検索して取得
+        // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
         // メッセージを削除
         $task->delete();
-
-        // トップページへリダイレクトさせる
-        return redirect('/');
+        // タスク一覧へリダイレクトさせる
+        return redirect('/tasks');
     }
 }
