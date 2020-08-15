@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddUserIdTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');//ユーザーID
+            
+             // 外部キー制約、データ参照に必要
+            $table->foreign('user_id')->references('id')->on('tasks');
+        });
+    }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tasks');//テーブル内容の削除
+    }
+}
