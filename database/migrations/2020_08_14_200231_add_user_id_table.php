@@ -17,7 +17,7 @@ class AddUserIdTable extends Migration
             $table->unsignedBigInteger('user_id');//ユーザーID
             
              // 外部キー制約、データ参照に必要
-            $table->foreign('user_id')->references('id')->on('tasks');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
     /**
@@ -27,6 +27,9 @@ class AddUserIdTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');//テーブル内容の削除
+        Schema::table('tasks', function (Blueprint $table){
+        $table->dropForeign(['user_id']);
+        $table->dropColumn('user_id');//ユーザーID
+            });
     }
 }
