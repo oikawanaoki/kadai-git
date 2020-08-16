@@ -81,11 +81,13 @@ class TasksController extends Controller
     {
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
-
+         if (\Auth::id() === $task->user_id) {
         // メッセージ詳細ビューでそれを表示
         return view('tasks.show', [
             'task' => $task,
         ]);
+         }
+        return redirect('/tasks');
     }
 
     /**
