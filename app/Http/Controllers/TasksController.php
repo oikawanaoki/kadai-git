@@ -17,10 +17,10 @@ class TasksController extends Controller
     {
         if (\Auth::check()) { // 認証済みの場合タスク一覧表示
         
-         // メッセージ一覧を取得
-        $tasks = Task::all();
+         // タスク一覧を取得
+        $tasks = $user->tasks;
 
-        // メッセージ一覧ビューでそれを表示
+        // 一覧ビューでそれを表示
         return view('tasks.index', [
             'tasks' => $tasks,
         ]);
@@ -87,7 +87,7 @@ class TasksController extends Controller
             'task' => $task,
         ]);
          }
-        return redirect('/tasks');
+         return redirect('/tasks');
     }
 
     /**
